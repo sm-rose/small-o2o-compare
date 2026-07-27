@@ -3,7 +3,7 @@ package com.small.o2o.comp.module.service.sql;
 
 import com.small.o2o.comp.core.enums.DBTypeEnum;
 import com.small.o2o.comp.core.enums.MetaBuzTypeEnum;
-import com.small.o2o.comp.core.exception.BussinessException;
+import com.small.o2o.comp.core.exception.BusinessException;
 import com.small.o2o.comp.module.param.DsQueryPrams;
 import com.small.o2o.comp.module.service.meta.JdbcTemplateService;
 import com.small.o2o.comp.module.vo.IndexExpressions;
@@ -89,7 +89,7 @@ public class OracleMetaDataService implements MetaDbTypeSQLService {
                 sql = queryTablePartitionVOSQL(pramsVO.getTableName());
                 break;
             default:
-                throw new BussinessException("不支持的元数据枚举查询"+pramsVO.getMetaBuzType());
+                throw new BusinessException("不支持的元数据枚举查询"+pramsVO.getMetaBuzType());
         }
         System.out.println("ORACLE " + pramsVO.getMetaBuzType().getCode() + " >>> SQL \n " + sql);
         return jdbcTemplateService.queryForList(sql, clazz);

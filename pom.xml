@@ -10,9 +10,31 @@
     </parent>
     <groupId>com.small.rose</groupId>
     <artifactId>small-o2o-compare</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>ob-generator</name>
-    <description>ob-generator</description>
+    <version>1.0.0</version>
+    <name>small-o2o-compare</name>
+    <url>https://github.com/sm-rose/small-o2o-compare</url>
+    <description>Database metadata comparison tool for Oracle & OceanBase migration. Compare tables, columns, indexes, partitions, sequences, views, procedures, and more.</description>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License v3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>small-rose</id>
+            <name>张小菜</name>
+            <email>small-rose@qq.com</email>
+            <url>https://zhangxiaocai.cn</url>
+            <roles>
+                <role>Owner</role>
+                <role>Developer</role>
+            </roles>
+            <timezone>Asia/Shanghai</timezone>
+        </developer>
+    </developers>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -41,7 +63,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <version>2.5.14</version>
-            <!--<optional>true</optional>-->
+            <optional>true</optional>
         </dependency>
 
 
@@ -97,19 +119,15 @@
         </dependency>
 
         <dependency>
-            <groupId>ojdbc6</groupId>
+            <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.3.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/ojdbc6-11.2.0.3.0.jar</systemPath>
+            <version>11.2.0.3</version>
         </dependency>
-        <!-- oceanBase驱动 -->
+        <!-- OceanBase驱动 -->
         <dependency>
             <groupId>com.oceanbase</groupId>
             <artifactId>oceanbase-client</artifactId>
             <version>2.2.7.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/oceanbase-client-2.2.7.2.jar</systemPath>
         </dependency>
         <!--undertow-->
         <dependency>
@@ -157,64 +175,13 @@
     </dependencies>
 
 
-    <!--Maven远程仓库设置 非必要，可以删除 -->
-    <!--<repositories>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>central</id>
-            <name>property</name>
-            <url>http://repo-gp17cicd.group.cpic.com/artifactory/property</url>
-        </repository>
-        <repository>
-            <snapshots />
-            <id>snapshots</id>
-            <name>property</name>
-            <url>http://repo-gp17cicd.group.cpic.com/artifactory/property</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>central</id>
-            <name>property</name>
-            <url>http://repo-gp17cicd.group.cpic.com/artifactory/property</url>
-        </pluginRepository>
-        <pluginRepository>
-            <snapshots />
-            <id>snapshots</id>
-            <name>property</name>
-            <url>http://repo-gp17cicd.group.cpic.com/artifactory/property</url>
-        </pluginRepository>
-    </pluginRepositories>-->
+
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.4.13</version>
-                <configuration>
-                    <imageName>${project.groupId}/${project.artifactId}:${project.version}
-                    </imageName>
-                    <dockerDirectory>${project.basedir}/src/main/docker
-                    </dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.name}-${project.version}-assembly.zip
-                            </include>
-                        </resource>
-                    </resources>
-                </configuration>
             </plugin>
         </plugins>
     </build>

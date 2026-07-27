@@ -4,7 +4,7 @@ package com.small.o2o.comp.module.compare;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.metadata.WriteSheet;
-import com.small.o2o.comp.core.excel.MultipleSheelPropety;
+import com.small.o2o.comp.core.excel.MultipleSheetProperty;
 import com.small.o2o.comp.module.param.DsCompareParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class ExcelGenaratorService {
     public void doHandle(HttpServletResponse response) {
 
         compareMetaDataService.check();
-        List<MultipleSheelPropety> excelList = compareMetaDataService.queryData();
+        List<MultipleSheetProperty> excelList = compareMetaDataService.queryData();
 
         log.info("开始生成Excel ...");
         String fileName = new String("元数据收集.xlsx".getBytes(), StandardCharsets.ISO_8859_1);

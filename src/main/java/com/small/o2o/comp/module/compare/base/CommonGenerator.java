@@ -4,7 +4,7 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.small.o2o.comp.core.excel.CheckCellHandler;
-import com.small.o2o.comp.core.excel.MultipleSheelPropety;
+import com.small.o2o.comp.core.excel.MultipleSheetProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
@@ -13,12 +13,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Slf4j
-public abstract class CommonGenerater {
+public abstract class CommonGenerator {
 
     protected  List<String> whiteListTable ;
 
 
-    public void generaterExcel(String filePath, List<MultipleSheelPropety> excelList) {
+    public void generaterExcel(String filePath, List<MultipleSheetProperty> excelList) {
 
 
         log.info("开始生成Excel ...");

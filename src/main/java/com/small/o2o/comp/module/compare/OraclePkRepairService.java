@@ -3,8 +3,8 @@ package com.small.o2o.comp.module.compare;
 
 import com.alibaba.excel.metadata.Sheet;
 import com.small.o2o.comp.core.enums.MetaBuzTypeEnum;
-import com.small.o2o.comp.core.excel.MultipleSheelPropety;
-import com.small.o2o.comp.module.compare.base.CommonGenerater;
+import com.small.o2o.comp.core.excel.MultipleSheetProperty;
+import com.small.o2o.comp.module.compare.base.CommonGenerator;
 import com.small.o2o.comp.module.service.sql.MetaDbTypeSQLService;
 import com.small.o2o.comp.module.vo.ORATablePrimaryKeyVO;
 import com.small.o2o.comp.module.vo.ObTablePrimaryKeyVO;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
- public class OraclePkRepairService  extends CommonGenerater {
+ public class OraclePkRepairService  extends CommonGenerator {
 
 
     @Autowired
@@ -27,12 +27,12 @@ import java.util.List;
 
 
     public void listPkList(String filePath){
-        List<MultipleSheelPropety> excelList  = getDatas();
+        List<MultipleSheetProperty> excelList  = getDatas();
         generaterExcel(filePath, excelList);
     }
 
-    private List<MultipleSheelPropety>  getDatas() {
-        ArrayList<MultipleSheelPropety> excelList = new ArrayList<>();
+    private List<MultipleSheetProperty>  getDatas() {
+        ArrayList<MultipleSheetProperty> excelList = new ArrayList<>();
         for (MetaBuzTypeEnum sheetEnum : MetaBuzTypeEnum.values()) {
 
             if (12 == sheetEnum.getIndex()) {
@@ -40,10 +40,10 @@ import java.util.List;
                 List<ORATablePrimaryKeyVO> typeList = getSomeList(sheetEnum.getCode());
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName("ORA表主键");
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(typeList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(typeList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             }
         }
         return excelList;

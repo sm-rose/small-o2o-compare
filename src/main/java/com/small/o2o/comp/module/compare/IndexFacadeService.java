@@ -6,7 +6,7 @@ import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.small.o2o.comp.core.enums.MetaBuzTypeEnum;
 import com.small.o2o.comp.core.excel.CheckCellHandler;
-import com.small.o2o.comp.core.excel.MultipleSheelPropety;
+import com.small.o2o.comp.core.excel.MultipleSheetProperty;
 import com.small.o2o.comp.module.service.oracle.MetaObjectListService;
 import com.small.o2o.comp.module.service.oracle.MetaTableIndexService;
 import com.small.o2o.comp.module.service.oracle.MetaTablePrimaryKeyService;
@@ -38,7 +38,7 @@ import java.util.List;
 
 
     public void doHandle(HttpServletResponse response) {
-        ArrayList<MultipleSheelPropety> excelList = new ArrayList<>();
+        ArrayList<MultipleSheetProperty> excelList = new ArrayList<>();
 
         getDatas(excelList);
 
@@ -70,7 +70,7 @@ import java.util.List;
 
 
     public void  doHandle(String filePath) {
-        ArrayList<MultipleSheelPropety> excelList = new ArrayList<>();
+        ArrayList<MultipleSheetProperty> excelList = new ArrayList<>();
 
         getDatas(excelList);
 
@@ -106,7 +106,7 @@ import java.util.List;
     }
 
 
-    private void getDatas(ArrayList<MultipleSheelPropety> excelList) {
+    private void getDatas(ArrayList<MultipleSheetProperty> excelList) {
 
         List<Integer> indexList = Arrays.asList(0, 4, 12);
         //List<Integer> indexList = Arrays.asList(0, 4);
@@ -122,10 +122,10 @@ import java.util.List;
                 List<OracleObjectInfoVO> tableInfoList = objectInfoService.getObjectInfo();
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(tableInfoList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(tableInfoList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             }
             if (4 == sheetEnum.getIndex()) {
                 log.info("开始查索引");
@@ -133,10 +133,10 @@ import java.util.List;
                 List<OracleTableIndexVO> tableIndexs = tableIndexService.getTableIndexs("");
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(tableIndexs);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(tableIndexs);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             }
             if (12 == sheetEnum.getIndex()) {
                 log.info("开始查主键");
@@ -144,10 +144,10 @@ import java.util.List;
                 List<OracleTablePrimaryKeyVO>  primaryKeyVOList = tablePrimaryKeyService.getTablePrimaryKey("");
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(primaryKeyVOList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(primaryKeyVOList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             }
         }
     }

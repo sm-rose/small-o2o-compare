@@ -7,13 +7,13 @@ package com.small.o2o.comp.core.exception;
  * @date: 2023/10/31 029 19:37
  * @version: v1.0
  */
-public class BussinessException extends RuntimeException {
+public class BusinessException extends RuntimeException {
 
-    public BussinessException(String message) {
+    public BusinessException(String message) {
         super(message);
     }
 
-    public BussinessException(String message, Throwable cause) {
+    public BusinessException(String message, Throwable cause) {
         super(message, cause);
     }
 }

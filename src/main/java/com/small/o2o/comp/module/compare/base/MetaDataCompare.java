@@ -1,6 +1,6 @@
 package com.small.o2o.comp.module.compare.base;
 
-import com.small.o2o.comp.core.excel.MultipleSheelPropety;
+import com.small.o2o.comp.core.excel.MultipleSheetProperty;
 import com.small.o2o.comp.module.service.meta.MetaDataContextHolder;
 import com.small.o2o.comp.module.param.DsCompareParam;
 
@@ -25,12 +25,12 @@ public abstract class MetaDataCompare {
     /*
      * 抽象方法，组装数据源里的数据
      */
-    protected abstract List<MultipleSheelPropety> queryData();
+    protected abstract List<MultipleSheetProperty> queryData();
 
     /*
      * 抽象方法，组装数据源里的数据
      */
-    protected abstract String generateExcel(String path, List<MultipleSheelPropety> result);
+    protected abstract String generateExcel(String path, List<MultipleSheetProperty> result);
 
 
     /*
@@ -45,7 +45,7 @@ public abstract class MetaDataCompare {
     public final String doCompareHandler(DsCompareParam dsCompareVO){
         initHolder(dsCompareVO);
         if (check()) {
-            List<MultipleSheelPropety> result = queryData();
+            List<MultipleSheetProperty> result = queryData();
             String path = dsCompareVO.getGenerateExcelPath();
             path = generateExcel(path, result);
             return path;

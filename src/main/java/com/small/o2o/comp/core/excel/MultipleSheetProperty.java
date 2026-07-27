@@ -13,7 +13,7 @@ import java.util.List;
  * @version: v1.0
  */
 @Data
-public class MultipleSheelPropety {
+public class MultipleSheetProperty {
 
 
     private List<? extends SheetDataVO> data;

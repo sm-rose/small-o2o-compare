@@ -8,7 +8,7 @@ import com.alibaba.excel.write.metadata.WriteSheet;
 import com.small.o2o.comp.core.enums.MetaBuzTypeEnum;
 import com.small.o2o.comp.core.excel.CheckCellHandler;
 import com.small.o2o.comp.core.excel.CustomRowHandler;
-import com.small.o2o.comp.core.excel.MultipleSheelPropety;
+import com.small.o2o.comp.core.excel.MultipleSheetProperty;
 import com.small.o2o.comp.module.compare.base.MetaDataCompare;
 import com.small.o2o.comp.module.param.DsCompareParam;
 import com.small.o2o.comp.module.param.DsQueryPrams;
@@ -84,8 +84,8 @@ public class CompareMetaDataService extends MetaDataCompare {
         return true ;
     }
     @Override
-    protected List<MultipleSheelPropety> queryData() {
-        ArrayList<MultipleSheelPropety> excelList = new ArrayList<>();
+    protected List<MultipleSheetProperty> queryData() {
+        ArrayList<MultipleSheetProperty> excelList = new ArrayList<>();
 
         DsQueryPrams params = DsQueryPrams.builder().build();
         for (MetaBuzTypeEnum buzTypeEnum :  MetaBuzTypeEnum.values()) {
@@ -110,18 +110,18 @@ public class CompareMetaDataService extends MetaDataCompare {
             List tableInfoList = queryBuzTypeService.getCompareMetaList(params);
             Sheet sheet = new Sheet(buzTypeEnum.getIndex(), 0);
             sheet.setSheetName(buzTypeEnum.getDesc());
-            MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-            multipleSheelPropety.setData(tableInfoList);
-            multipleSheelPropety.setSheet(sheet);
-            excelList.add(multipleSheelPropety);
+            MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+            MultipleSheetProperty.setData(tableInfoList);
+            MultipleSheetProperty.setSheet(sheet);
+            excelList.add(MultipleSheetProperty);
         }
         return excelList;
     }
 
 
 
-    protected List<MultipleSheelPropety> queryData1() {
-        ArrayList<MultipleSheelPropety> excelList = new ArrayList<>();
+    protected List<MultipleSheetProperty> queryData1() {
+        ArrayList<MultipleSheetProperty> excelList = new ArrayList<>();
         for (MetaBuzTypeEnum sheetEnum :  MetaBuzTypeEnum.values()) {
 
 
@@ -131,20 +131,20 @@ public class CompareMetaDataService extends MetaDataCompare {
                 List<OracleObjectInfoVO> tableInfoList = objectInfoService.getObjectInfo();
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(tableInfoList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(tableInfoList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             } else if (1 == sheetEnum.getIndex()) {
                 log.info("开始查1 " + sheetEnum.getDesc());
                 //查表信息
                  List<OracleTableInfoVO> tableInfoList = tableListService.getTableInfo();
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(tableInfoList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(tableInfoList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             } else if (2 == sheetEnum.getIndex()) {
                 log.info("开始查表和列");
                 long a = System.currentTimeMillis();
@@ -154,29 +154,29 @@ public class CompareMetaDataService extends MetaDataCompare {
                 log.info("取数据耗时" + (b - a) / 100 + " s");
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(tableColumnVOList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(tableColumnVOList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             } else if (3 == sheetEnum.getIndex()) {
                 log.info("开始查" + sheetEnum.getDesc());
                 //
                 List<OracleTableViewVO> tableInfoList = tableViewListService.getTableViewList();
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(tableInfoList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(tableInfoList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             }else if (12 == sheetEnum.getIndex()) {
                 log.info("开始查 主键" + sheetEnum.getDesc());
                 List<OracleTablePrimaryKeyVO> typeList = tablePrimaryKeyService.getTablePrimaryKey(sheetEnum.getCode());
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(typeList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(typeList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             }
             if (4 == sheetEnum.getIndex()) {
                 log.info("开始查索引");
@@ -184,46 +184,46 @@ public class CompareMetaDataService extends MetaDataCompare {
                 List<OracleTableIndexVO> tableIndexs = tableIndexService.getTableIndexs("");
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(tableIndexs);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(tableIndexs);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             } else if (5 == sheetEnum.getIndex()) {
                 log.info("开始查序列");
                 //第二个sheet数据    此处数据集为手动创建数据  -- 实际开发替换为具体业务逻辑数据
                 List<OracleSequencesVO> sequencesList = sequencesService.getSequences();
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(sequencesList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(sequencesList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             } else if (6 == sheetEnum.getIndex()) {
                 log.info("开始查 TYPE ");
                 List<OracleTypesVO> typeList = typeListService.getTypeList();
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(typeList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(typeList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
 
             } else if (9 == sheetEnum.getIndex() || 7 == sheetEnum.getIndex() || 8 == sheetEnum.getIndex()) {
                 log.info("开始查 " + sheetEnum.getCode());
                 List<OracleProcedureVO> typeList = procedureListService.getProcedureList(sheetEnum.getCode());
                 Sheet sheet = new Sheet(sheetEnum.getIndex(), 0);
                 sheet.setSheetName(sheetEnum.getDesc());
-                MultipleSheelPropety multipleSheelPropety = new MultipleSheelPropety();
-                multipleSheelPropety.setData(typeList);
-                multipleSheelPropety.setSheet(sheet);
-                excelList.add(multipleSheelPropety);
+                MultipleSheetProperty MultipleSheetProperty = new MultipleSheetProperty();
+                MultipleSheetProperty.setData(typeList);
+                MultipleSheetProperty.setSheet(sheet);
+                excelList.add(MultipleSheetProperty);
             }
         }
         return excelList;
     }
 
     @Override
-    protected String generateExcel(String filePath, List<MultipleSheelPropety> excelList) {
+    protected String generateExcel(String filePath, List<MultipleSheetProperty> excelList) {
         log.info("开始生成Excel ...");
         if (!filePath.endsWith(".xlsx")) {
             DsCompareParam dsCompare = MetaDataContextHolder.getDsCompare();
