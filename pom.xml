@@ -13,7 +13,7 @@
     <version>1.0.0</version>
     <name>small-o2o-compare</name>
     <url>https://github.com/sm-rose/small-o2o-compare</url>
-    <description>Database metadata comparison tool for Oracle & OceanBase migration. Compare tables, columns, indexes, partitions, sequences, views, procedures, and more.</description>
+    <description>Database metadata comparison tool for Oracle and OceanBase migration. Compare tables, columns, indexes, partitions, sequences, views, procedures, and more.</description>
 
     <licenses>
         <license>
