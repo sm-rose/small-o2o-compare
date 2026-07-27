@@ -4,7 +4,9 @@
 
 ![](o2o-logo.png)
 
-# small-o2o-compare：Oracle ↔ OceanBase 数据库元数据对比工具
+# small-o2o-compare
+
+### Oracle ↔ OceanBase 数据库元数据对比工具
 
 **Oracle 与 OceanBase（OB-Oracle 模式）数据库对象对比。输出 Excel 差异报告和修复 SQL，专为"去O"迁移场景设计。**
 
